@@ -1,11 +1,11 @@
 // Storage Controller
-const StorageCtrl = (function(){
+const StorageCtrl = (function () {
     // Public methods
     return {
-        storeItem: function(item){
+        storeItem: function (item) {
             let items;
             // Check if any items in ls
-            if(localStorage.getItem('items') === null){
+            if (localStorage.getItem('items') === null) {
                 items = [];
                 // Push new item
                 items.push(item);
@@ -22,10 +22,10 @@ const StorageCtrl = (function(){
                 localStorage.setItem('items', JSON.stringify(items));
             }
         },
-        getItemsFromStorage: function() {
+        getItemsFromStorage: function () {
             let items;
-            if(localStorage.getItem('items') === null){
-                items = []; 
+            if (localStorage.getItem('items') === null) {
+                items = [];
             } else {
                 items = JSON.parse(localStorage.getItem('items'));
             }
@@ -86,7 +86,7 @@ const ItemCtrl = (function () {
         },
         deleteItem: function (id) {
             // Get ids
-            const ids = data.items.map(function(item){
+            const ids = data.items.map(function (item) {
                 return item.id;
             });
             // Get index
@@ -225,7 +225,7 @@ const UICtrl = (function () {
             // Turn Nodelist into Array
             listItems = Array.from(listItems);
 
-            listItems.forEach(function(item){
+            listItems.forEach(function (item) {
                 item.remove();
             })
         },
@@ -288,7 +288,7 @@ const App = (function (ItemCtrl, StorageCtrl, UICtrl) {
         document.querySelector(UISelectors.clearBtn).addEventListener('click', clearAllItemsClick);
     }
 
-    const backBtnClick = function(e) {
+    const backBtnClick = function (e) {
         e.preventDefault();
         UICtrl.clearEditState();
     }
